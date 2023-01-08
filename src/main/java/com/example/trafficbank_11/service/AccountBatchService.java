@@ -26,8 +26,9 @@ public class AccountBatchService {
 
     @Transactional
     public void calculate(){
-        LocalDateTime start = LocalDateTime.now().minusMinutes(20L);
-        LocalDateTime end = LocalDateTime.now().plusMinutes(20L);
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime start =  LocalDateTime.of(now.getYear(), now.getMonth().getValue(), now.getDayOfMonth(), 0, 0, 0, 0);
+        LocalDateTime end = start.plusDays(1L).minusNanos(1);
         System.out.println("start: "+start);
         System.out.println("end: "+end);
         List<AccountRecord> accountRecords = accountRecordRepository.findAllByCreatedDateBetween(start, end);
