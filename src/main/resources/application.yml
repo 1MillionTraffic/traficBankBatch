@@ -1,0 +1,20 @@
+server:
+  port: 8000
+
+spring:
+  datasource:
+    hikari:
+      jdbc-url: jdbc:mysql://localhost:3306/spring_batch_db
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: 1234
+#  batch:
+#    job:
+#      names: ${job.name:NONE}
+#    jdbc:
+#      initialize-schema: always
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+
