@@ -7,11 +7,7 @@ import com.example.trafficbank_11.repository.AccountRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -40,8 +36,9 @@ public class AccountBatchService {
                     .orElseThrow(() -> new IllegalArgumentException(""));
             fromUser.minusMoney(accountRecord.getMoney());
             toUser.plusMoney(accountRecord.getMoney());
-            accountRepository.save(fromUser);
-            accountRepository.save(toUser);
+            // entity manager 쓰기 지연을 이용 위해 save 불 필요
+//            accountRepository.save(fromUser);
+//            accountRepository.save(toUser);
         }
     }
 }
